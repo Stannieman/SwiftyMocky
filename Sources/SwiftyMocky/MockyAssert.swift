@@ -1,6 +1,9 @@
 #if canImport(XCTest)
 import XCTest
 #endif
+#if canImport(Testing)
+import Testing
+#endif
 import Foundation
 
 /// You can use this class if there is need to define custom
@@ -24,11 +27,14 @@ public final class MockyAssertion {
 public func MockyAssert(
     _ expression: @autoclosure () -> Bool,
     _ message: @autoclosure () -> String = "Verify failed",
+    fileId: StaticString = #fileID,
+    filePath: StaticString = #filePath,
     file: StaticString = #file,
-    line: UInt = #line
+    line: UInt = #line,
+    column: UInt = #column
 ) {
     guard let handler = MockyAssertion.handler else {
-        return XCTMockyAssert(expression(), message(), file: file, line: line)
+        return XCTMockyAssert(expression(), message(), fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     handler(expression(), message(), file, line)
@@ -45,12 +51,33 @@ public func MockyAssert(
 private func XCTMockyAssert(
     _ expression: @autoclosure () -> Bool,
     _ message: @autoclosure () -> String = "Verify failed",
+    fileId: StaticString = #fileID,
+    filePath: StaticString = #filePath,
     file: StaticString = #file,
-    line: UInt = #line
+    line: UInt = #line,
+    column: UInt = #column
 ) {
-    #if canImport(XCTest)
-    XCTAssert(expression(), message(), file: file, line: line)
-    #else
+#if canImport(Testing)
+    if Test.current != nil {
+        if !expression() {
+            Issue.record(
+                Comment(rawValue: message()),
+                sourceLocation: .init(
+                    fileID: fileId.description,
+                    filePath: filePath.description,
+                    line: Int(line),
+                    column: Int(column)
+                )
+            )
+        }
+        // Return so we do not call XCTAssert if we are in a Swift Testing test.
+        return
+    }
+#endif
+    
+#if canImport(XCTest)
+    XCTAssert(expression(), message(), file: filePath, line: line)
+#else
     assert(expression(), message(), file: file, line: line)
-    #endif
+#endif
 }

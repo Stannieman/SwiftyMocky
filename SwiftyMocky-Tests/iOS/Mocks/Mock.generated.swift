@@ -465,7 +465,7 @@ open class AMassiveTestProtocolMock: AMassiveTestProtocol, Mock, StaticMock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -480,7 +480,7 @@ open class AMassiveTestProtocolMock: AMassiveTestProtocol, Mock, StaticMock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -537,7 +537,7 @@ open class AMassiveTestProtocolMock: AMassiveTestProtocol, Mock, StaticMock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    static public func verify(_ method: StaticVerify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    static public func verify(_ method: StaticVerify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -552,7 +552,7 @@ open class AMassiveTestProtocolMock: AMassiveTestProtocol, Mock, StaticMock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     static private func addInvocation(_ call: StaticMethodType) {
@@ -720,7 +720,7 @@ open class AVeryAssociatedProtocolMock<T1,T2>: AVeryAssociatedProtocol, Mock whe
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -735,7 +735,7 @@ open class AVeryAssociatedProtocolMock<T1,T2>: AVeryAssociatedProtocol, Mock whe
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -1043,7 +1043,7 @@ open class AVeryGenericProtocolMock: AVeryGenericProtocol, Mock, StaticMock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -1058,7 +1058,7 @@ open class AVeryGenericProtocolMock: AVeryGenericProtocol, Mock, StaticMock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -1115,7 +1115,7 @@ open class AVeryGenericProtocolMock: AVeryGenericProtocol, Mock, StaticMock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    static public func verify(_ method: StaticVerify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    static public func verify(_ method: StaticVerify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -1130,7 +1130,7 @@ open class AVeryGenericProtocolMock: AVeryGenericProtocol, Mock, StaticMock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     static private func addInvocation(_ call: StaticMethodType) {
@@ -1767,7 +1767,7 @@ open class AllLiteralsContainerMock: AllLiteralsContainer, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -1782,7 +1782,7 @@ open class AllLiteralsContainerMock: AllLiteralsContainer, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -1978,7 +1978,7 @@ open class AnotherProtocolMock: AnotherProtocol, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -1993,7 +1993,7 @@ open class AnotherProtocolMock: AnotherProtocol, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -2430,7 +2430,7 @@ open class ComplicatedServiceTypeMock: ComplicatedServiceType, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -2445,7 +2445,7 @@ open class ComplicatedServiceTypeMock: ComplicatedServiceType, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -2599,7 +2599,7 @@ open class DateSortableMock: DateSortable, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -2614,7 +2614,7 @@ open class DateSortableMock: DateSortable, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -2810,7 +2810,7 @@ open class EdgeCasesGenericsProtocolMock: EdgeCasesGenericsProtocol, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -2825,7 +2825,7 @@ open class EdgeCasesGenericsProtocolMock: EdgeCasesGenericsProtocol, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -2956,7 +2956,7 @@ open class EmptyProtocolMock: EmptyProtocol, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -2971,7 +2971,7 @@ open class EmptyProtocolMock: EmptyProtocol, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -3148,7 +3148,7 @@ open class FailsWithAutoClosureOnSwift5Mock: FailsWithAutoClosureOnSwift5, Mock 
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -3163,7 +3163,7 @@ open class FailsWithAutoClosureOnSwift5Mock: FailsWithAutoClosureOnSwift5, Mock 
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -3448,7 +3448,7 @@ open class FailsWithKeywordArgumentsMock: FailsWithKeywordArguments, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -3463,7 +3463,7 @@ open class FailsWithKeywordArgumentsMock: FailsWithKeywordArguments, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -3785,7 +3785,7 @@ public final class FailsWithReturnedTypeBeingGenericOfSelfMock: FailsWithReturne
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -3800,7 +3800,7 @@ public final class FailsWithReturnedTypeBeingGenericOfSelfMock: FailsWithReturne
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -3961,7 +3961,7 @@ open class FailsWithUntaggedMock: FailsWithUntagged, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -3976,7 +3976,7 @@ open class FailsWithUntaggedMock: FailsWithUntagged, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -4153,7 +4153,7 @@ open class FetcherMock: Fetcher, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -4168,7 +4168,7 @@ open class FetcherMock: Fetcher, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -4345,7 +4345,7 @@ open class GenericProtocolReturningIntMock: GenericProtocolReturningInt, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -4360,7 +4360,7 @@ open class GenericProtocolReturningIntMock: GenericProtocolReturningInt, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -4575,7 +4575,7 @@ open class GenericProtocolWithTypeConstraintMock: GenericProtocolWithTypeConstra
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -4590,7 +4590,7 @@ open class GenericProtocolWithTypeConstraintMock: GenericProtocolWithTypeConstra
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -4767,7 +4767,7 @@ open class HistorySectionMapperTypeMock: HistorySectionMapperType, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -4782,7 +4782,7 @@ open class HistorySectionMapperTypeMock: HistorySectionMapperType, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -4996,7 +4996,7 @@ open class InoutProtocolMock: InoutProtocol, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -5011,7 +5011,7 @@ open class InoutProtocolMock: InoutProtocol, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -5184,7 +5184,7 @@ open class NonSwiftProtocolMock: NSObject, NonSwiftProtocol, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -5199,7 +5199,7 @@ open class NonSwiftProtocolMock: NSObject, NonSwiftProtocol, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -5621,7 +5621,7 @@ open class ProtocolMethodsGenericThatDifferOnlyInReturnTypeMock: ProtocolMethods
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -5636,7 +5636,7 @@ open class ProtocolMethodsGenericThatDifferOnlyInReturnTypeMock: ProtocolMethods
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -5850,7 +5850,7 @@ open class ProtocolMethodsThatDifferOnlyInReturnTypeMock: ProtocolMethodsThatDif
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -5865,7 +5865,7 @@ open class ProtocolMethodsThatDifferOnlyInReturnTypeMock: ProtocolMethodsThatDif
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -6056,7 +6056,7 @@ open class ProtocolWithAssociatedTypeMock<T>: ProtocolWithAssociatedType, Mock w
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -6071,7 +6071,7 @@ open class ProtocolWithAssociatedTypeMock<T>: ProtocolWithAssociatedType, Mock w
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -6225,7 +6225,7 @@ open class ProtocolWithAssociatedType2Mock<ValueType>: ProtocolWithAssociatedTyp
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -6240,7 +6240,7 @@ open class ProtocolWithAssociatedType2Mock<ValueType>: ProtocolWithAssociatedTyp
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -6396,7 +6396,7 @@ open class ProtocolWithAttributesMock: NSObject, ProtocolWithAttributes, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -6411,7 +6411,7 @@ open class ProtocolWithAttributesMock: NSObject, ProtocolWithAttributes, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -6732,7 +6732,7 @@ open class ProtocolWithAttributesBMock: ProtocolWithAttributesB, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -6747,7 +6747,7 @@ open class ProtocolWithAttributesBMock: ProtocolWithAttributesB, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -6943,7 +6943,7 @@ open class ProtocolWithClosuresMock: ProtocolWithClosures, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -6958,7 +6958,7 @@ open class ProtocolWithClosuresMock: ProtocolWithClosures, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -7208,7 +7208,7 @@ open class ProtocolWithConflictingMembersMock: ProtocolWithConflictingMembers, M
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -7223,7 +7223,7 @@ open class ProtocolWithConflictingMembersMock: ProtocolWithConflictingMembers, M
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -7436,7 +7436,7 @@ open class ProtocolWithCustomAttributesMock: ProtocolWithCustomAttributes, Mock 
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -7451,7 +7451,7 @@ open class ProtocolWithCustomAttributesMock: ProtocolWithCustomAttributes, Mock 
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -7628,7 +7628,7 @@ open class ProtocolWithDeprecatedMembersMock: ProtocolWithDeprecatedMembers, Moc
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -7643,7 +7643,7 @@ open class ProtocolWithDeprecatedMembersMock: ProtocolWithDeprecatedMembers, Moc
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -7830,7 +7830,7 @@ open class ProtocolWithGenericConstraintsMock<ContainedType>: ProtocolWithGeneri
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -7845,7 +7845,7 @@ open class ProtocolWithGenericConstraintsMock<ContainedType>: ProtocolWithGeneri
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -8060,7 +8060,7 @@ open class ProtocolWithGenericMethodsMock: ProtocolWithGenericMethods, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -8075,7 +8075,7 @@ open class ProtocolWithGenericMethodsMock: ProtocolWithGenericMethods, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -8252,7 +8252,7 @@ open class ProtocolWithGenericMethodsNestedMock: ProtocolWithGenericMethodsNeste
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -8267,7 +8267,7 @@ open class ProtocolWithGenericMethodsNestedMock: ProtocolWithGenericMethodsNeste
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -8439,7 +8439,7 @@ open class ProtocolWithInitializersMock: ProtocolWithInitializers, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -8454,7 +8454,7 @@ open class ProtocolWithInitializersMock: ProtocolWithInitializers, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -8617,7 +8617,7 @@ open class ProtocolWithMethodWithManyParametersMock: ProtocolWithMethodWithManyP
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -8632,7 +8632,7 @@ open class ProtocolWithMethodWithManyParametersMock: ProtocolWithMethodWithManyP
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -8816,7 +8816,7 @@ open class ProtocolWithMethodsWithGenericReturnTypeThatThrowsMock: ProtocolWithM
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -8831,7 +8831,7 @@ open class ProtocolWithMethodsWithGenericReturnTypeThatThrowsMock: ProtocolWithM
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -9068,7 +9068,7 @@ open class ProtocolWithObjcMock: NSObject, ProtocolWithObjc, Mock, StaticMock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -9083,7 +9083,7 @@ open class ProtocolWithObjcMock: NSObject, ProtocolWithObjc, Mock, StaticMock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -9140,7 +9140,7 @@ open class ProtocolWithObjcMock: NSObject, ProtocolWithObjc, Mock, StaticMock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    static public func verify(_ method: StaticVerify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    static public func verify(_ method: StaticVerify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -9155,7 +9155,7 @@ open class ProtocolWithObjcMock: NSObject, ProtocolWithObjc, Mock, StaticMock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     static private func addInvocation(_ call: StaticMethodType) {
@@ -9494,7 +9494,7 @@ open class ProtocolWithPropertiesMock: ProtocolWithProperties, Mock, StaticMock 
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -9509,7 +9509,7 @@ open class ProtocolWithPropertiesMock: ProtocolWithProperties, Mock, StaticMock 
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -9566,7 +9566,7 @@ open class ProtocolWithPropertiesMock: ProtocolWithProperties, Mock, StaticMock 
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    static public func verify(_ method: StaticVerify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    static public func verify(_ method: StaticVerify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -9581,7 +9581,7 @@ open class ProtocolWithPropertiesMock: ProtocolWithProperties, Mock, StaticMock 
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     static private func addInvocation(_ call: StaticMethodType) {
@@ -9813,7 +9813,7 @@ open class ProtocolWithStaticMembersMock: ProtocolWithStaticMembers, Mock, Stati
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -9828,7 +9828,7 @@ open class ProtocolWithStaticMembersMock: ProtocolWithStaticMembers, Mock, Stati
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -9885,7 +9885,7 @@ open class ProtocolWithStaticMembersMock: ProtocolWithStaticMembers, Mock, Stati
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    static public func verify(_ method: StaticVerify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    static public func verify(_ method: StaticVerify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -9900,7 +9900,7 @@ open class ProtocolWithStaticMembersMock: ProtocolWithStaticMembers, Mock, Stati
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     static private func addInvocation(_ call: StaticMethodType) {
@@ -10454,7 +10454,7 @@ open class ProtocolWithSubscriptsMock: ProtocolWithSubscripts, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -10469,7 +10469,7 @@ open class ProtocolWithSubscriptsMock: ProtocolWithSubscripts, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -10684,7 +10684,7 @@ open class ProtocolWithThrowingMethodsMock: ProtocolWithThrowingMethods, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -10699,7 +10699,7 @@ open class ProtocolWithThrowingMethodsMock: ProtocolWithThrowingMethods, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -10876,7 +10876,7 @@ open class ProtocolWithTuplesMock: ProtocolWithTuples, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -10891,7 +10891,7 @@ open class ProtocolWithTuplesMock: ProtocolWithTuples, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -11082,7 +11082,7 @@ open class ProtocolWithWhereAfterDefinitionMock<T>: ProtocolWithWhereAfterDefini
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -11097,7 +11097,7 @@ open class ProtocolWithWhereAfterDefinitionMock<T>: ProtocolWithWhereAfterDefini
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -11506,7 +11506,7 @@ open class SampleServiceTypeMock: SampleServiceType, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -11521,7 +11521,7 @@ open class SampleServiceTypeMock: SampleServiceType, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -11914,7 +11914,7 @@ public final class SelfConstrainedProtocolMock: SelfConstrainedProtocol, Mock, S
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -11929,7 +11929,7 @@ public final class SelfConstrainedProtocolMock: SelfConstrainedProtocol, Mock, S
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -11986,7 +11986,7 @@ public final class SelfConstrainedProtocolMock: SelfConstrainedProtocol, Mock, S
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    static public func verify(_ method: StaticVerify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    static public func verify(_ method: StaticVerify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -12001,7 +12001,7 @@ public final class SelfConstrainedProtocolMock: SelfConstrainedProtocol, Mock, S
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     static private func addInvocation(_ call: StaticMethodType) {
@@ -12485,7 +12485,7 @@ open class ShouldAllowNoStubDefinedMock: ShouldAllowNoStubDefined, Mock, StaticM
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -12500,7 +12500,7 @@ open class ShouldAllowNoStubDefinedMock: ShouldAllowNoStubDefined, Mock, StaticM
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -12557,7 +12557,7 @@ open class ShouldAllowNoStubDefinedMock: ShouldAllowNoStubDefined, Mock, StaticM
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    static public func verify(_ method: StaticVerify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    static public func verify(_ method: StaticVerify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -12572,7 +12572,7 @@ open class ShouldAllowNoStubDefinedMock: ShouldAllowNoStubDefined, Mock, StaticM
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     static private func addInvocation(_ call: StaticMethodType) {
@@ -12913,7 +12913,7 @@ open class SimpleProtocolThatInheritsOtherProtocolsMock: SimpleProtocolThatInher
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -12928,7 +12928,7 @@ open class SimpleProtocolThatInheritsOtherProtocolsMock: SimpleProtocolThatInher
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -13212,7 +13212,7 @@ open class SimpleProtocolUsingCollectionsMock: SimpleProtocolUsingCollections, M
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -13227,7 +13227,7 @@ open class SimpleProtocolUsingCollectionsMock: SimpleProtocolUsingCollections, M
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -13415,7 +13415,7 @@ open class SimpleProtocolWithBothMethodsAndPropertiesMock: SimpleProtocolWithBot
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -13430,7 +13430,7 @@ open class SimpleProtocolWithBothMethodsAndPropertiesMock: SimpleProtocolWithBot
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -13691,7 +13691,7 @@ open class SimpleProtocolWithMethodsMock: SimpleProtocolWithMethods, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -13706,7 +13706,7 @@ open class SimpleProtocolWithMethodsMock: SimpleProtocolWithMethods, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -13937,7 +13937,7 @@ open class SimpleProtocolWithPropertiesMock: SimpleProtocolWithProperties, Mock 
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -13952,7 +13952,7 @@ open class SimpleProtocolWithPropertiesMock: SimpleProtocolWithProperties, Mock 
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -14083,7 +14083,7 @@ open class SuggestionProtocolMock: SuggestionProtocol, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -14098,7 +14098,7 @@ open class SuggestionProtocolMock: SuggestionProtocol, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -14458,7 +14458,7 @@ open class SuggestionRepositoryMock: SuggestionRepository, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -14473,7 +14473,7 @@ open class SuggestionRepositoryMock: SuggestionRepository, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -14832,7 +14832,7 @@ open class SuggestionRepositoryConstrainedToProtocolMock<Entity>: SuggestionRepo
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -14847,7 +14847,7 @@ open class SuggestionRepositoryConstrainedToProtocolMock<Entity>: SuggestionRepo
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -14978,7 +14978,7 @@ open class TestAutoImportMock: TestAutoImport, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -14993,7 +14993,7 @@ open class TestAutoImportMock: TestAutoImport, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -15204,7 +15204,7 @@ open class UnnamedAttributesProtocolMock: UnnamedAttributesProtocol, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -15219,7 +15219,7 @@ open class UnnamedAttributesProtocolMock: UnnamedAttributesProtocol, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -15439,7 +15439,7 @@ open class UserNetworkTypeMock: UserNetworkType, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -15454,7 +15454,7 @@ open class UserNetworkTypeMock: UserNetworkType, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -15651,7 +15651,7 @@ open class UserStorageTypeMock: UserStorageType, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -15666,7 +15666,7 @@ open class UserStorageTypeMock: UserStorageType, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -15880,7 +15880,7 @@ open class VariadicParametersProtocolMock: VariadicParametersProtocol, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -15895,7 +15895,7 @@ open class VariadicParametersProtocolMock: VariadicParametersProtocol, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -16073,7 +16073,7 @@ open class WithConflictingNameMock: WithConflictingName, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -16088,7 +16088,7 @@ open class WithConflictingNameMock: WithConflictingName, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
@@ -16510,7 +16510,7 @@ open class ComposedServiceMock: ComposedService, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -16525,7 +16525,7 @@ open class ComposedServiceMock: ComposedService, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {

@@ -200,7 +200,7 @@ class ItemsRepositoryMock: ItemsRepository, Mock {
         methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
     }
 
-    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), fileId: StaticString = #fileID, filePath: StaticString = #filePath, file: StaticString = #file, line: UInt = #line, column: UInt = #column) {
         let fullMatches = matchingCalls(method, file: file, line: line)
         let success = count.matches(fullMatches)
         let assertionName = method.method.assertionName()
@@ -215,7 +215,7 @@ class ItemsRepositoryMock: ItemsRepository, Mock {
                 name: assertionName
             )
         }()
-        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", fileId: fileId, filePath: filePath, file: file, line: line, column: column)
     }
 
     private func addInvocation(_ call: MethodType) {
