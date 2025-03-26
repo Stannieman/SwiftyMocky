@@ -22,8 +22,11 @@ public final class MockyAssertion {
 /// - Parameters:
 ///   - expression: Expression to assert on
 ///   - message: Message
-///   - file: File name (levae default)
-///   - line: Line (levae default)
+///   - fileId: File id (leave default)
+///   - filePath: File patj (leave default)
+///   - file: File name (leave default)
+///   - line: Line (leave default)
+///   - column: Column (leave default)
 public func MockyAssert(
     _ expression: @autoclosure () -> Bool,
     _ message: @autoclosure () -> String = "Verify failed",
@@ -46,8 +49,11 @@ public func MockyAssert(
 /// - Parameters:
 ///   - expression: Expression to assert on
 ///   - message: Message
-///   - file: File name (levae default)
-///   - line: Line (levae default)
+///   - fileId: File id (leave default)
+///   - filePath: File patj (leave default)
+///   - file: File name (leave default)
+///   - line: Line (leave default)
+///   - column: Column (leave default)
 private func XCTMockyAssert(
     _ expression: @autoclosure () -> Bool,
     _ message: @autoclosure () -> String = "Verify failed",
